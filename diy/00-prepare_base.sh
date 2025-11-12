@@ -25,10 +25,10 @@ git clone https://$github/sbwml/tools_dwarves tools/dwarves
 sed -i 's/noinitrd/noinitrd mitigations=off/g' target/linux/x86/image/grub-efi.cfg
 
 # Default LAN IP
-sed -i "s/192.168.1.1/10.0.0.1/g" package/base-files/files/bin/config_generate
+sed -i "s/192.168.1.1/192.168.5.100/g" package/base-files/files/bin/config_generate
 
 # Default Hostname
-sed -i 's/OpenWrt/ZeroWrt/' package/base-files/files/bin/config_generate
+#sed -i 's/OpenWrt/ZeroWrt/' package/base-files/files/bin/config_generate
 
 # Default Password
 default_password=$(openssl passwd -5 password)
