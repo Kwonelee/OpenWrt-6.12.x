@@ -4,8 +4,8 @@
 git clone https://$github/sbwml/autocore-arm -b openwrt-24.10 package/system/autocore
 
 # rockchip - target - 6.12
-rm -rf target/linux/rockchip
-git clone -b openwrt-24.10 https://zhao:$git_password@$gitea/zhao/target_linux_rockchip target/linux/rockchip
+#rm -rf target/linux/rockchip
+#git clone -b openwrt-24.10 https://zhao:$git_password@$gitea/zhao/target_linux_rockchip target/linux/rockchip
 
 # bpf-headers - 6.12
 sed -ri "s/(PKG_PATCHVER:=)[^\"]*/\16.12/" package/kernel/bpf-headers/Makefile
@@ -30,8 +30,8 @@ sed -ie 's/^\(.\).*vermagic$/\1cp $(TOPDIR)\/.vermagic $(LINUX_DIR)\/.vermagic/'
 grep HASH include/kernel-6.12 | awk -F'HASH-' '{print $2}' | awk '{print $1}' | md5sum | awk '{print $1}' > .vermagic
 
 # generic - target - 6.12
-rm -rf target/linux/generic
-git clone -b openwrt-24.10 https://zhao:$git_password@$gitea/zhao/target_linux_generic target/linux/generic
+#rm -rf target/linux/generic
+#git clone -b openwrt-24.10 https://zhao:$git_password@$gitea/zhao/target_linux_generic target/linux/generic
 
 # kernel modules
 rm -rf package/kernel/linux
@@ -138,8 +138,8 @@ curl -s $mirror/openwrt/patch/iproute2/901-ip-introduce-the-ecn_low-per-route-fe
 curl -s $mirror/openwrt/patch/iproute2/902-ss-display-ecn_low-if-tcp_info-tcpi_options-TCPI_OPT.patch > package/network/utils/iproute2/patches/902-ss-display-ecn_low-if-tcp_info-tcpi_options-TCPI_OPT.patch
 
 # linux-firmware
-rm -rf package/firmware/linux-firmware
-git clone https://$gitea/zhao/package_firmware_linux-firmware package/firmware/linux-firmware
+#rm -rf package/firmware/linux-firmware
+#git clone https://$gitea/zhao/package_firmware_linux-firmware package/firmware/linux-firmware
 
 # mt76
 rm -rf package/kernel/mt76
