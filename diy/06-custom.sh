@@ -19,8 +19,6 @@ echo -e "\\ndefine Device/firefly_station-m2
 endef
 TARGET_DEVICES += firefly_station-m2" >> target/linux/rockchip/image/armv8.mk
 
-sed -i 's/linkease_easepi-r1/firefly_station-m2/g' package/boot/uboot-rockchip/Makefile
-
 # 复制dts到files/arch/arm64/boot/dts/rockchip
 mkdir -p target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/
 cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3566-roc-pc.dts target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/
