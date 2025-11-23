@@ -100,7 +100,7 @@ git clone https://$github/sbwml/feeds_packages_net_zerotier feeds/packages/net/z
 #git clone https://$github/sbwml/luci-app-airconnect package/new/airconnect --depth=1
 
 # netkit-ftp
-git clone https://$github/sbwml/package_new_ftp package/new/ftp
+#git clone https://$github/sbwml/package_new_ftp package/new/ftp
 
 # nethogs
 git clone https://$github/sbwml/package_new_nethogs package/new/nethogs
