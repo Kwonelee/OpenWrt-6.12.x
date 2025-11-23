@@ -18,8 +18,8 @@ mkdir -p files/etc/config
 wget -qO- https://raw.githubusercontent.com/Kwonelee/Kwonelee/refs/heads/main/rule/openclash > files/etc/config/openclash
 
 # 集成设备无线
-mkdir -p package/base-files/files/lib/firmware/brcm
-cp -a $GITHUB_WORKSPACE/configfiles/firmware/brcm/* package/base-files/files/lib/firmware/brcm/
+#mkdir -p package/base-files/files/lib/firmware/brcm
+#cp -a $GITHUB_WORKSPACE/configfiles/firmware/brcm/* package/base-files/files/lib/firmware/brcm/
 
 # 添加设备
 echo -e "\\ndefine Device/firefly_station-m2
