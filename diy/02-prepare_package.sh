@@ -15,7 +15,7 @@ git clone https://$github/Kwonelee/default-settings package/new/default-settings
 #git clone https://$github/sbwml/package_new_istore package/new/linkease
 
 # wwan
-git clone https://$github/sbwml/wwan-packages package/new/wwan --depth=1
+#git clone https://$github/sbwml/wwan-packages package/new/wwan --depth=1
 
 # luci-app-filemanager
 #rm -rf feeds/luci/applications/luci-app-filemanager
