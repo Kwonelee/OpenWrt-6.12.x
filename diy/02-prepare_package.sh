@@ -103,7 +103,7 @@ git clone https://$github/sbwml/feeds_packages_net_zerotier feeds/packages/net/z
 #git clone https://$github/sbwml/package_new_ftp package/new/ftp
 
 # nethogs
-git clone https://$github/sbwml/package_new_nethogs package/new/nethogs
+#git clone https://$github/sbwml/package_new_nethogs package/new/nethogs
 
 # SSRP & Passwall
 rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box}
