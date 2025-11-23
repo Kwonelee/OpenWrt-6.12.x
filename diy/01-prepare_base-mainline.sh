@@ -138,8 +138,8 @@ curl -s $mirror/openwrt/patch/iproute2/901-ip-introduce-the-ecn_low-per-route-fe
 curl -s $mirror/openwrt/patch/iproute2/902-ss-display-ecn_low-if-tcp_info-tcpi_options-TCPI_OPT.patch > package/network/utils/iproute2/patches/902-ss-display-ecn_low-if-tcp_info-tcpi_options-TCPI_OPT.patch
 
 # linux-firmware
-rm -rf package/firmware/linux-firmware
-git clone https://$gitea/zhao/package_firmware_linux-firmware package/firmware/linux-firmware
+#rm -rf package/firmware/linux-firmware
+#git clone https://$gitea/zhao/package_firmware_linux-firmware package/firmware/linux-firmware
 
 # mt76
 rm -rf package/kernel/mt76
