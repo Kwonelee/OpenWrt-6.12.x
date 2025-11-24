@@ -271,7 +271,8 @@ endef
 define U-Boot/easepi-r1-rk3568
   $(U-Boot/rk3568/Default)
   NAME:=LinkEase EasePi R1
-  DEFAULT:=y
+  BUILD_DEVICES:= \
+    linkease_easepi-r1
 endef
 
 define U-Boot/fastrhino-r66s-rk3568
