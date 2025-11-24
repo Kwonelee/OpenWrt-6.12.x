@@ -106,7 +106,7 @@ git clone https://$github/sbwml/feeds_packages_net_zerotier feeds/packages/net/z
 #git clone https://$github/sbwml/package_new_nethogs package/new/nethogs
 
 # SSRP & Passwall
-rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box}
+#rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box}
 #git clone https://$github/sbwml/openwrt_helloworld package/new/helloworld -b v5
 
 # openlist
