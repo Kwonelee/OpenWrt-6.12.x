@@ -38,7 +38,7 @@ pushd target/linux/generic/backport-6.12
     curl -Os $mirror/openwrt/patch/kernel-6.12/regulator/830-01-v6.13-regulator-Add-of_regulator_get_optional-for-pure-DT.patch
     curl -Os $mirror/openwrt/patch/kernel-6.12/regulator/830-02-v6.13-regulator-Add-devres-version-of-of_regulator_get_optional.patch
     curl -Os $mirror/openwrt/patch/kernel-6.12/regulator/830-03-v6.15-regulator-Add-devm_-of_regulator_get.patch
-popd
+popd    
 
 # kernel modules
 rm -rf package/kernel/linux
@@ -176,3 +176,6 @@ curl -s $mirror/openwrt/patch/kernel-6.12/net/983-add-bcm-fullcone-nft_masq-supp
 # shortcut-fe
 curl -s $mirror/openwrt/patch/kernel-6.12/net/601-netfilter-export-udp_get_timeouts-function.patch > target/linux/generic/hack-6.12/601-netfilter-export-udp_get_timeouts-function.patch
 curl -s $mirror/openwrt/patch/kernel-6.12/net/953-net-patch-linux-kernel-to-support-shortcut-fe.patch > target/linux/generic/hack-6.12/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
+
+# rtl8822cs
+git clone https://$github/sbwml/package_kernel_rtl8822cs package/kernel/rtl8822cs
