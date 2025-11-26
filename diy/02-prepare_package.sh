@@ -185,6 +185,9 @@ true > feeds/packages/utils/watchcat/files/watchcat.config
 rm -rf package/libs/libpcap
 git clone https://$github/sbwml/package_libs_libpcap package/libs/libpcap
 
+# sqm-scripts
+#curl -s $mirror/openwrt/patch/sqm-scripts/Makefile > feeds/packages/net/sqm-scripts/Makefile
+
 
 # 修复 Rust 报错
 sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
