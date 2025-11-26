@@ -14,7 +14,6 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   CONFIG_FILE: .config
-  arch: rockchip
   gcc: 15
   mirror: https://openwrt.kejizero.xyz
   gitea: gitea.kejizero.xyz
