@@ -25,10 +25,10 @@ git clone https://$github/Kwonelee/default-settings package/new/default-settings
 #git clone https://$github/sbwml/luci-app-airplay2 package/new/airplay2
 
 # luci-app-bandix
-#git clone https://github.com/timsaya/luci-app-bandix package/new/luci-app-bandix
+#git clone https://$github/timsaya/luci-app-bandix package/new/luci-app-bandix
 
 # openwrt-bandix
-#git clone https://github.com/timsaya/openwrt-bandix package/new/openwrt-bandix
+#git clone https://$github/timsaya/openwrt-bandix package/new/openwrt-bandix
 
 # luci-app-webdav
 #git clone https://$github/sbwml/luci-app-webdav package/new/luci-app-webdav
@@ -207,6 +207,6 @@ function git_sparse_clone() {
 
 # 常见插件
 #git clone https://$github/sbwml/package_new_istore package/new/linkease
-git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
-git_sparse_clone main https://github.com/gdy666/luci-app-lucky luci-app-lucky lucky
-git clone -b master https://github.com/w9315273/luci-app-adguardhome package/new/luci-app-adguardhome
+git_sparse_clone master https://$github/vernesong/OpenClash luci-app-openclash
+git_sparse_clone main https://$github/gdy666/luci-app-lucky luci-app-lucky lucky
+git clone -b master https://$github/w9315273/luci-app-adguardhome package/new/luci-app-adguardhome
