@@ -49,7 +49,7 @@ jobs:
     - name: 准备完成
       uses: actions/checkout@main
 
-    - name: 创建工作目录
+    - name: 创建目录设置变量
       run: |
         mkdir -p ${GITHUB_WORKSPACE}/workdir
         chmod 755 ${GITHUB_WORKSPACE}/workdir
