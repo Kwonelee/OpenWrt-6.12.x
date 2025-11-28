@@ -86,7 +86,7 @@ jobs:
         cp -rf /builder/openwrt_snap/package/firmware/linux-firmware /builder/openwrt/package/firmware/
         
         echo "替换feeds.conf.default..."
-        cp -rf ${{ github.workspace }}/armv8/feeds.conf.default /builder/openwrt/feeds.conf.default
+        cp -rf $GITHUB_WORKSPACE/armv8/feeds.conf.default /builder/openwrt/feeds.conf.default
         
         echo "移除多余文件..."
         rm -rf /builder/openwrt_snap
