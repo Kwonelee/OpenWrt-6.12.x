@@ -18,33 +18,44 @@ env:
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
+  TZ: Asia/Shanghai
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
   build:
-    name: build (${{ matrix.tag }}, ${{ matrix.model }}, ubuntu-24.04)
-    runs-on: ubuntu-24.04
-    defaults:
-      run:
-        shell: bash
+    runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
       matrix:
-        model:
-          - rockchip
-        tag:
+        REPO_BRANCH:
           - v24.10.4
+        ARCHITECTURE:
+          - armv8
+        os:
+          - ubuntu-22.04
+
+      fail-fast: false
 
     steps:
-    - name: Setup variables
+    - name: 合并磁盘
+      uses: easimon/maximize-build-space@master
+      with:
+        swap-size-mb: 1024
+        temp-reserve-mb: 512
+        root-reserve-mb: 4608
+        remove-dotnet: "true"
+        remove-android: "true"
+        remove-haskell: "true"
+        remove-codeql: "true"
+
+    - name: 准备完成
+      uses: actions/checkout@main
+
+    - name: 创建工作目录
       run: |
-        sudo timedatectl set-timezone 'Asia/Shanghai'
-        git config --global user.name 'actions'
-        git config --global user.email 'action@github.com'
         mkdir -p ${GITHUB_WORKSPACE}/workdir
         chmod 755 ${GITHUB_WORKSPACE}/workdir
         echo "WORKDIR=$PWD" >> $GITHUB_ENV
-        
+
     - name: Show system
       run: |
         echo -e "\n\e[1;32mCPU:\e[0m"
@@ -59,11 +70,6 @@ jobs:
         uname -a
         echo
 
-    - name: Free disk space
-      uses: sbwml/actions@free-disk
-      with:
-        build-mount-path: ${{ env.WORKDIR }}/workdir
-
     - name: Build System Setup
       uses: sbwml/actions@openwrt-build-setup
 
@@ -75,7 +81,7 @@ jobs:
       run: |
         df -hT $PWD
         echo "开始克隆源代码仓库..."
-        git -c advice.detachedHead=false clone --depth=1 --branch "${{ matrix.tag }}" --single-branch --quiet $REPO_URL openwrt
+        git -c advice.detachedHead=false clone --depth=1 --branch "${{ matrix.REPO_BRANCH }}" --single-branch --quiet $REPO_URL openwrt
         # git clone --depth=1 --quiet -b main $REPO_URL openwrt_snap
         git clone --depth=1 --quiet -b master https://github.com/immortalwrt/immortalwrt openwrt_snap
         
@@ -99,7 +105,7 @@ jobs:
       #uses: klever1988/cachewrtbuild@main
       #with:
         #ccache: 'true'
-        #mixkey: ${{ matrix.model }}-${{ matrix.tag }}
+        #mixkey: ${{ matrix.os }}-${{ matrix.ARCHITECTURE }}-${{ matrix.REPO_BRANCH }}
         #prefix: ${{ github.workspace }}/openwrt
 
     - name: 更新 feeds
@@ -110,7 +116,7 @@ jobs:
 
     - name: 加载自定义配置
       env:
-        CONFIG_FILE_PATH: armv8/${{ env.CONFIG_FILE }}
+        CONFIG_FILE_PATH: ${{ matrix.ARCHITECTURE }}/${{ env.CONFIG_FILE }}
       run: |
         # [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE_PATH ] && mv $CONFIG_FILE_PATH openwrt/$CONFIG_FILE
@@ -173,12 +179,12 @@ jobs:
       id: tag
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "release_tag=$(date +"%Y.%m.%d-%H.%M")-${{ matrix.model }}" >> ${GITHUB_OUTPUT}
+        echo "release_tag=$(date +"%Y.%m.%d-%H.%M")-${{ matrix.ARCHITECTURE }}" >> ${GITHUB_OUTPUT}
         touch release.txt
         echo "
-        🖥️ Architecture: ${{ matrix.model }}
+        🖥️ Architecture: rockchip-${{ matrix.ARCHITECTURE }}-test
 
-        🔀 Branch: ${{ matrix.tag }}
+        🔀 Branch: ${{ matrix.REPO_BRANCH }}
 
         📂 Source Code: ${{ env.REPO_URL }}
 
