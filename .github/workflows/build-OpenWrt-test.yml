@@ -51,12 +51,12 @@ jobs:
 
     - name: 创建工作目录
       run: |
-        sudo timedatectl set-timezone 'Asia/Shanghai'
-        git config --global user.name 'actions'
-        git config --global user.email 'action@github.com'
         mkdir -p ${GITHUB_WORKSPACE}/workdir
         chmod 755 ${GITHUB_WORKSPACE}/workdir
         echo "WORKDIR=$PWD" >> $GITHUB_ENV
+        sudo timedatectl set-timezone 'Asia/Shanghai'
+        git config --global user.name 'actions'
+        git config --global user.email 'action@github.com'
 
     - name: Show system
       run: |
