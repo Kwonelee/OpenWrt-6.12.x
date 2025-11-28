@@ -184,11 +184,13 @@ jobs:
         echo "release_tag=$(date +"%Y.%m.%d-%H.%M")-${{ matrix.ARCHITECTURE }}" >> ${GITHUB_OUTPUT}
         touch release.txt
         echo "
-        🖥️ Architecture: rockchip-${{ matrix.ARCHITECTURE }}-test
+        🖥️ Architecture: rockchip-${{ matrix.ARCHITECTURE }}
 
         🔀 Branch: ${{ matrix.REPO_BRANCH }}
 
         📂 Source Code: ${{ env.REPO_URL }}
+
+        🏃 Runs On: ${{ matrix.os }}
 
         🕒 Compilation Time: $(date +"%Y年%m月%d日%H时%M分") " >> release.txt
         echo "status=success" >> ${GITHUB_OUTPUT}
