@@ -200,6 +200,8 @@ jobs:
 
         📂 Source Code: ${{ env.REPO_URL }}
 
+        🏃 Runs On: ${{ matrix.os }}
+
         🕒 Compilation Time: $(date +"%Y年%m月%d日%H时%M分") " >> release.txt
         echo "status=success" >> ${GITHUB_OUTPUT}
 
