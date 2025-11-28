@@ -41,7 +41,9 @@ jobs:
         sudo timedatectl set-timezone 'Asia/Shanghai'
         git config --global user.name 'actions'
         git config --global user.email 'action@github.com'
-        echo build_dir="/builder" >> "$GITHUB_ENV"
+        mkdir -p ${GITHUB_WORKSPACE}/workdir
+        chmod 755 ${GITHUB_WORKSPACE}/workdir
+        echo "WORKDIR=$PWD" >> $GITHUB_ENV
         
     - name: Show system
       run: |
@@ -69,7 +71,7 @@ jobs:
       uses: sbwml/actions@install-llvm
 
     - name: 克隆源码
-      working-directory: /builder
+      working-directory: ${{ env.WORKDIR }}/workdir
       run: |
         df -hT $PWD
         echo "开始克隆源代码仓库..."
@@ -78,20 +80,20 @@ jobs:
         git clone --depth=1 --quiet -b master https://github.com/immortalwrt/immortalwrt openwrt_snap
         
         echo "正在进行源代码处理..."
-        rm -rf /builder/openwrt/package/boot/{rkbin,uboot-rockchip,arm-trusted-firmware-rockchip}
-        cp -rf /builder/openwrt_snap/package/boot/{uboot-rockchip,arm-trusted-firmware-rockchip} /builder/openwrt/package/boot/
-        rm -rf /builder/openwrt/target/linux/{rockchip,generic}
-        cp -rf /builder/openwrt_snap/target/linux/{rockchip,generic} /builder/openwrt/target/linux/
-        rm -rf /builder/openwrt/package/firmware/linux-firmware
-        cp -rf /builder/openwrt_snap/package/firmware/linux-firmware /builder/openwrt/package/firmware/
+        rm -rf ${{ env.WORKDIR }}/workdir/openwrt/package/boot/{rkbin,uboot-rockchip,arm-trusted-firmware-rockchip}
+        cp -rf ${{ env.WORKDIR }}/workdir/openwrt_snap/package/boot/{uboot-rockchip,arm-trusted-firmware-rockchip} ${{ env.WORKDIR }}/workdir/openwrt/package/boot/
+        rm -rf ${{ env.WORKDIR }}/workdir/openwrt/target/linux/{rockchip,generic}
+        cp -rf ${{ env.WORKDIR }}/workdir/openwrt_snap/target/linux/{rockchip,generic} ${{ env.WORKDIR }}/workdir/openwrt/target/linux/
+        rm -rf ${{ env.WORKDIR }}/workdir/openwrt/package/firmware/linux-firmware
+        cp -rf ${{ env.WORKDIR }}/workdir/openwrt_snap/package/firmware/linux-firmware ${{ env.WORKDIR }}/workdir/openwrt/package/firmware/
         
         echo "替换feeds.conf.default..."
-        cp -rf $GITHUB_WORKSPACE/armv8/feeds.conf.default /builder/openwrt/feeds.conf.default
+        cp -rf ${{ github.workspace }}/armv8/feeds.conf.default ${{ env.WORKDIR }}/workdir/openwrt/feeds.conf.default
         
         echo "移除多余文件..."
-        rm -rf /builder/openwrt_snap
+        rm -rf ${{ env.WORKDIR }}/workdir/openwrt_snap
         
-        ln -sf /builder/openwrt $GITHUB_WORKSPACE/openwrt
+        ln -sf ${{ env.WORKDIR }}/workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     #- name: 缓存构建动作
       #uses: klever1988/cachewrtbuild@main
