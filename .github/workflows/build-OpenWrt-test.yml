@@ -58,7 +58,7 @@ jobs:
         git config --global user.name 'actions'
         git config --global user.email 'action@github.com'
 
-    - name: Show system
+    - name: 检查服务器配置
       run: |
         echo -e "\n\e[1;32mCPU:\e[0m"
         echo "$(grep 'model name' /proc/cpuinfo | head -1 | awk -F ': ' '{print $2}') ($(grep 'cpu MHz' /proc/cpuinfo | head -1 | awk -F ': ' '{print $2}')MHz) x $(grep processor /proc/cpuinfo  | wc -l)"
@@ -72,10 +72,10 @@ jobs:
         uname -a
         echo
 
-    - name: Build System Setup
+    - name: 初始化编译环境
       uses: sbwml/actions@openwrt-build-setup
 
-    - name: Install LLVM
+    - name: 安装 LLVM
       uses: sbwml/actions@install-llvm
 
     - name: 克隆源码
