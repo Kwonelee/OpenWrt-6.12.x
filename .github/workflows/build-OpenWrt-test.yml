@@ -174,7 +174,7 @@ jobs:
         echo "release_tag=$(date +"%Y.%m.%d-%H.%M")-${{ matrix.model }}" >> ${GITHUB_OUTPUT}
         touch release.txt
         echo "
-        🖥️ Architecture: test-${{ matrix.model }}
+        🖥️ Architecture: ${{ matrix.model }}
 
         🔀 Branch: ${{ matrix.tag }}
 
