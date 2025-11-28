@@ -1,4 +1,4 @@
-name: Build OpenWrt test
+name: Build OpenWrt ubuntu-24.04
 
 on:
   repository_dispatch:
