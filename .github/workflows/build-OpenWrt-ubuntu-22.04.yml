@@ -1,4 +1,4 @@
-name: Build OpenWrt ubuntu-22.04
+name: Build OpenWrt ubuntu 22.04
 
 on:
   repository_dispatch:
