@@ -36,15 +36,7 @@ jobs:
 
     steps:
     - name: 合并磁盘
-      uses: easimon/maximize-build-space@master
-      with:
-        swap-size-mb: 1024
-        temp-reserve-mb: 512
-        root-reserve-mb: 4608
-        remove-dotnet: "true"
-        remove-android: "true"
-        remove-haskell: "true"
-        remove-codeql: "true"
+      uses: sbwml/actions@free-disk
 
     - name: 准备完成
       uses: actions/checkout@main
@@ -54,8 +46,6 @@ jobs:
         mkdir -p ${GITHUB_WORKSPACE}/workdir
         chmod 755 ${GITHUB_WORKSPACE}/workdir
         echo "WORKDIR=$PWD" >> $GITHUB_ENV
-        git config --global user.name 'actions'
-        git config --global user.email 'action@github.com'
         sudo timedatectl set-timezone 'Asia/Shanghai'
 
     - name: 检查服务器配置
