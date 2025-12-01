@@ -13,7 +13,7 @@ env:
   mirror: https://openwrt.kejizero.xyz
   gitea: gitea.kejizero.xyz
   # mirror: https://init2.cooluc.com
-  # gitea: git.cooluc.com
+  gitea2: git.cooluc.com
   github: github.com
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
