@@ -30,8 +30,8 @@ sed -ie 's/^\(.\).*vermagic$/\1cp $(TOPDIR)\/.vermagic $(LINUX_DIR)\/.vermagic/'
 grep HASH include/kernel-6.12 | awk -F'HASH-' '{print $2}' | awk '{print $1}' | md5sum | awk '{print $1}' > .vermagic
 
 # generic - target - 6.12
-#rm -rf target/linux/generic
-#git clone -b openwrt-24.10 https://zhao:$git_password@$gitea/zhao/target_linux_generic target/linux/generic
+rm -rf target/linux/generic
+git clone -b main https://Kwonelee:$GITHUB_TOKEN@github.com/Kwonelee/target_linux_generic target/linux/generic
 
 # Necessary patch files
 pushd target/linux/generic/backport-6.12
