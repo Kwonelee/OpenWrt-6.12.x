@@ -127,7 +127,7 @@ sed -i 's/syslog/none/g' feeds/packages/admin/netdata/files/netdata.conf
 
 # Theme
 git clone https://$github/Kwonelee/luci-theme-argon package/new/luci-theme-argon --depth=1
-#curl -s https://github.com/Kwonelee/Kwonelee/blob/main/beifen/OP-bak/argon/bg.webp > package/new/luci-theme-argon/luci-theme-argon/htdocs/luci-static/argon/img/bg.webp
+#curl -s https://raw.githubusercontent.com/Kwonelee/Kwonelee/main/beifen/OP-bak/argon/bg.webp > package/new/luci-theme-argon/luci-theme-argon/htdocs/luci-static/argon/img/bg.webp
 #sed -i "s/option primary '#31a1a1'/option primary '#8760f7'/g" package/new/luci-theme-argon/luci-app-argon-config/root/etc/config/argon
 #sed -i "s/option dark_primary '#31a1a1'/option dark_primary '#6727dc'/g" package/new/luci-theme-argon/luci-app-argon-config/root/etc/config/argon
 #sed -i "#2e2b60/#7640f0/g" package/new/luci-theme-argon/luci-app-argon-config/root/etc/config/argon
