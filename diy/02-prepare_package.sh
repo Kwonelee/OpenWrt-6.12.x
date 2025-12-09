@@ -155,6 +155,7 @@ rm -rf feeds/packages/utils/coremark
 git clone https://$github/sbwml/openwrt_pkgs package/new/custom --depth=1
 rm -rf package/new/custom/luci-app-adguardhome
 rm -rf feeds/packages/net/adguardhome
+sed -i 's/2.31.2/2.51.2/g' package/new/custom/filebrowser/Makefile
 sed -i 's/admin/OpenWrt/g' package/new/custom/luci-app-filebrowser-go/root/etc/config/filebrowser
 sed -i 's/services/nas/g' package/new/custom/luci-app-filebrowser-go/luasrc/view/filebrowser/filebrowser_log.htm
 sed -i 's/services/nas/g' package/new/custom/luci-app-filebrowser-go/luasrc/view/filebrowser/filebrowser_status.htm
